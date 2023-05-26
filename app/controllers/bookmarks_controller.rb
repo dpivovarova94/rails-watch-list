@@ -15,6 +15,14 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def destroy
+    @list = List.find(params[:list_id])
+    # @bookmark = @list.movies.find(params[:movie_id])
+    @bookmark = Bookmark.find(params[:id])
+    @bookmark.destroy
+    redirect_to @list, :notice => "Task Deleted"
+  end
+
   private
 
   def bookmark_params
